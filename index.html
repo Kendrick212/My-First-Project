@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks | Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="A premium, glassmorphic task manager built with native web technologies.">
+</head>
+<body>
+  <div class="background-effects">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <main class="app-container">
+    <header class="app-header">
+      <div class="header-text">
+        <h1>Tasks</h1>
+        <p>Stay organized, stay creative.</p>
+      </div>
+      <div class="stats">
+        <span id="task-count">0</span>
+      </div>
+    </header>
+
+    <form id="todo-form">
+      <div class="input-wrapper">
+        <input type="text" id="todo-input" placeholder="What needs to be done?" autocomplete="off" />
+        <button type="submit" id="add-btn" aria-label="Add task">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+      </div>
+    </form>
+    
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+      <h3>All Caught Up!</h3>
+      <p>Your task list is beautifully empty.<br>Add a task above to get started.</p>
+    </div>
+
+    <ul id="todo-list" class="todo-list"></ul>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
