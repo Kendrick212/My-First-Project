@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tasks | Premium</title>
+  <title>Calorie Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="A premium, glassmorphic task manager built with native web technologies.">
 </head>
 <body>
   <div class="background-effects">
@@ -20,36 +19,74 @@
   <main class="app-container">
     <header class="app-header">
       <div class="header-text">
-        <h1>Tasks</h1>
-        <p>Stay organized, stay creative.</p>
+        <h1>Calorie Tracker</h1>
+        <p id="date-display"></p>
       </div>
-      <div class="stats">
-        <span id="task-count">0</span>
+      <div class="goal-container">
+        <span class="goal-label">Goal</span>
+        <span id="goal-display">2000</span>
+        <button id="edit-goal-btn" class="icon-btn" aria-label="Edit goal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        </button>
       </div>
     </header>
 
-    <form id="todo-form">
-      <div class="input-wrapper">
-        <input type="text" id="todo-input" placeholder="What needs to be done?" autocomplete="off" />
-        <button type="submit" id="add-btn" aria-label="Add task">
+    <div class="progress-section">
+      <div class="progress-stats">
+        <div class="stat consumed">
+          <span class="stat-value" id="consumed-calories">0</span>
+          <span class="stat-label">Consumed</span>
+        </div>
+        <div class="stat remaining">
+          <span class="stat-value" id="remaining-calories">2000</span>
+          <span class="stat-label">Remaining</span>
+        </div>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="progress-percentage" id="progress-percentage">0%</div>
+    </div>
+
+    <form id="food-form">
+      <div class="input-row">
+        <input type="text" id="food-name" placeholder="Food item" autocomplete="off" />
+        <input type="number" id="food-calories" placeholder="Calories" min="0" />
+        <button type="submit" id="add-btn" aria-label="Add food">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         </button>
       </div>
     </form>
-    
+
     <div id="empty-state" class="empty-state">
       <div class="empty-icon-wrapper">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon">
-          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-          <path d="M9 12l2 2 4-4"></path>
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
         </svg>
       </div>
-      <h3>All Caught Up!</h3>
-      <p>Your task list is beautifully empty.<br>Add a task above to get started.</p>
+      <h3>No Food Logged</h3>
+      <p>Start tracking your calories by<br>adding your first meal above.</p>
     </div>
 
-    <ul id="todo-list" class="todo-list"></ul>
+    <ul id="food-list" class="todo-list"></ul>
+
+    <div class="summary-bar" id="summary-bar">
+      <span id="food-count">0 items</span>
+      <span id="total-summary">0 cal</span>
+      <button id="clear-day-btn" class="text-btn">Clear Day</button>
+    </div>
   </main>
+
+  <div id="goal-modal" class="modal">
+    <div class="modal-content">
+      <h3>Set Daily Calorie Goal</h3>
+      <input type="number" id="goal-input" min="500" max="10000" />
+      <div class="modal-actions">
+        <button id="cancel-goal-btn" class="secondary-btn">Cancel</button>
+        <button id="save-goal-btn" class="primary-btn">Save</button>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
